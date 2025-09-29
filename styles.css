@@ -1,86 +1,248 @@
-/* Basic reset */
-* {
+/* ===============================
+   Global Font & Theme Setup
+   =============================== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:wght@400;600&display=swap');
+
+:root {
+  --primary-color: #0077b6;   /* Blue */
+  --accent-color: #00b4d8;    /* Teal */
+  --text-color: #333;         /* For light backgrounds */
+  --light-text: #16d897;      /* For dark backgrounds */
+  --bg-color: #fefefe;
+}
+
+/* Default (light mode) */
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  background-color: #f9f9f9;
-  color: #333;
-  padding: 1rem;
+/* Headings */
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: hsl(310, 82%, 47%);
 }
 
-/* Header */
+/* ===============================
+   Header & Navigation
+   =============================== */
 header {
-  background: #333;
-  color: #fff;
-  padding: 1rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
 }
+
 
 header h1 {
   margin-bottom: 0.5rem;
 }
 
-nav ul {
+.tagline {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+header nav ul {
   list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
   display: flex;
-  gap: 1rem;
+  justify-content: center;
+  gap: 20px;
 }
 
-nav a {
-  color: #fff;
+header nav ul li a {
+  color: rgb(107, 61, 61);
   text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
 }
 
-nav a:hover {
-  text-decoration: underline;
+header nav ul li a:hover {
+  color: #90e0ef;
 }
 
-/* Sections */
-main {
-  margin: 2rem 0;
-}
-
+/* ===============================
+   Sections
+   =============================== */
 section {
-  margin-bottom: 2rem;
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
 }
 
-img {
-  margin-top: 1rem;
-  border-radius: 50%;
+h2 {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--accent-color);
+  display: inline-block;
+  padding-bottom: 5px;
+  margin-bottom: 1rem;
 }
 
-/* Form */
+/* Alternate background for sections */
+section:nth-child(even) {
+  background: #f9f9ff;
+}
+
+/* ===============================
+   Skills
+   =============================== */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill {
+  background: var(--primary-color);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* ===============================
+   Projects
+   =============================== */
+.project {
+  background: #f0f0ff;
+  border-left: 5px solid var(--primary-color);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+
+/* ===============================
+   Forms
+   =============================== */
 form {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 10px;
 }
 
-input, textarea, button {
-  padding: 0.5rem;
+form input, form textarea, form button {
+  padding: 10px;
   font-size: 1rem;
 }
 
-button {
-  background: #333;
-  color: #fff;
+form button {
+  background: var(--primary-color);
+  color: white;
   border: none;
   cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
 }
 
-button:hover {
-  background: #555;
+form button:hover {
+  background: var(--accent-color);
+}
+
+.contact-info {
+  margin-top: 1rem;
+}
+
+/* ===============================
+   Footer
+   =============================== */
+footer {
+  background: var(--footer-color);
+  color: rgba(34, 240, 212, 0.664);
+  text-align: center;
+  padding: 1rem;
+}
+
+#theme-toggle {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background: white;
+  color: var(--footer-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* ===============================
+   Dark Mode
+   =============================== */
+.dark-mode {
+  background: #1a1a1a;
+  color: #f0f0f0;
+}
+.dark-mode section p {
+  color: var(--light-text); /* uses your highlight yellow */
+}
+
+
+.dark-mode header {
+  background: linear-gradient(135deg, #222, #444);
+}
+
+/* Headings in dark mode */
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4 {
+  color: var(--light-text);  /* bright yellow you defined */
+}
+
+/* Section text */
+.dark-mode section {
+  color: #f0f0f0;
+}
+
+/* Skills (make chips stand out) */
+.dark-mode .skill {
+  background: var(--accent-color);
+  color: #1a1a1a;  /* dark text on light chip */
+}
+
+/* Projects */
+.dark-mode .project {
+  background: #333;
+  border-left: 5px solid var(--accent-color);
+  color: #da3535;
+}
+
+/* Form labels + inputs */
+.dark-mode form input,
+.dark-mode form textarea {
+  background: #222;
+  color: #d14343;
+  border: 1px solid #444;
+}
+/* Form labels in dark mode */
+.dark-mode form label {
+  color: #0ec0c0;   /* light grey/white so it shows on dark background */
+}
+
+
+.dark-mode form input::placeholder,
+.dark-mode form textarea::placeholder {
+  color: #f57878;
+}
+
+.dark-mode form button {
+  background: var(--accent-color);
+  color: #1a1a1a;
+}
+
+/* Contact info */
+.dark-mode .contact-info {
+  color: #cc3c3c;
 }
 
 /* Footer */
-footer {
-  text-align: center;
-  margin-top: 2rem;
-  padding: 1rem;
-  background: #eee;
+.dark-mode footer {
+  background: #111;
+  color: #c94747;
 }
 
